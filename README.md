@@ -3,36 +3,37 @@
 ![](https://img.shields.io/badge/license-MIT-green) ![](https://img.shields.io/badge/maintained%3F-Yes-green) ![](https://img.shields.io/badge/swift-5.4-green) ![](https://img.shields.io/badge/iOS-13.0-red) ![](https://img.shields.io/badge/macOS-10.15-red) ![](https://img.shields.io/badge/tvOS-13.0-red) ![](https://img.shields.io/badge/watchOS-6.0-red) ![](https://img.shields.io/badge/release-v1.0.8-blue)
 
 
-'''
-import OSLog
+LogManager is a simple library to make it easier to add pretty debugging logging entries to an App project.
 
-let logger = Logger(subsystem: "BackyardBirdData", Category: "Account")
+## Overview
 
-logger.info("text")
+The library is broken into two main parts: 
 
-logger.error("text")
+* `Debug` - Use the static **Debug** class when you only want the comments to be printed when the app is compiled for **Debug**.
+* `Log` - Use the static **Log** class when you want the comments to be printed for both the **Debug** and **Release** versions of the app.
 
-logger.notice("text")
-'''
+Both `Debug` and `Log` include the same set of functions: `log`, `info`, `error` and `notice`.
+ 
+### Log
+ 
+`static func log(_ message:String, suppressDuplicates:Bool = true)` 
 
-Logger.log("my message")
-Logger.logError("my message")
-Logger.logNotice("my message")
+Creates a simple log entry and optionally suppresses duplicate entries.
 
-Logger.log(subsystem: "Bundle", Category: "Class", Type: .info, "")
+### Info
+ 
+`static func info(subsystem:String, category:String, _ message:String)`
 
-Logger.subsystem = "bundle"
-Logger.category = "class"
-Logger.log("my message")
+Writes an **Info** message to the log with an optional `subsystem` and `category` used to identify and group log entries.
 
-Logger.log("my message", mode: .both)
-Logger.log("my message", mode: .debug)
-Logger.log("my message", mode: .release)
+### Error
 
-Logger.debug("my message")
+`static func error(subsystem:String, category:String, _ message:String)`
 
-Log.info(subsystem: "SpeechRecognizer", category: "Reset", "This is my message")
-Log.info(category: "Reset", "")
-Log.info("")
+Writes an **Error** message to the log with an optional `subsystem` and `category` used to identify and group log entries.
 
-Debug.info(subsystem: "ComicPanoramaView", category: "Coordinates", "This is my message")
+### Notice
+
+`static func notice(subsystem:String, category:String, _ message:String)`
+
+Writes an **Notice** message to the log with an optional `subsystem` and `category` used to identify and group log entries.
