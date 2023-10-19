@@ -9,7 +9,7 @@ import Foundation
 import OSLog
 
 /// A helper class to incorporate logging that will always generate a log entry whether run in Debug or Release modes.
-class Log {
+open class Log {
     // MARK: - Static Properties
     /// Holds any logs that are built when they are first called.
     private static var logs:[String:Logger] = [:]
@@ -39,7 +39,7 @@ class Log {
     /// - Parameters:
     ///   - message: The message to log.
     ///   - suppressDuplicates: If `true` duplicate entries will be suppressed.
-    static func entry(_ message:String, suppressDuplicates:Bool = true) {
+    public static func entry(_ message:String, suppressDuplicates:Bool = true) {
         if suppressDuplicates {
             if message != lastMessage {
                 print(message)
@@ -55,7 +55,7 @@ class Log {
     ///   - subsystem: The subsystem for the log.
     ///   - category: The category for the log.
     ///   - message: The message to log.
-    static func info(subsystem:String, category:String, _ message:String) {
+    public static func info(subsystem:String, category:String, _ message:String) {
         let log = logFor(subsystem: subsystem, category: category)
         log.info("\(message)")
     }
@@ -65,7 +65,7 @@ class Log {
     ///   - subsystem: The subsystem for the log.
     ///   - category: The category for the log.
     ///   - message: The message to log.
-    static func error(subsystem:String, category:String, _ message:String) {
+    public static func error(subsystem:String, category:String, _ message:String) {
         let log = logFor(subsystem: subsystem, category: category)
         log.error("\(message)")
     }
@@ -75,7 +75,7 @@ class Log {
     ///   - subsystem: The subsystem for the log.
     ///   - category: The category for the log.
     ///   - message: The message to log.
-    static func notice(subsystem:String, category:String, _ message:String) {
+    public static func notice(subsystem:String, category:String, _ message:String) {
         let log = logFor(subsystem: subsystem, category: category)
         log.notice("\(message)")
     }

@@ -1,15 +1,14 @@
 //
-//  DebugLogger.swift
-//  ReedWriteCycle
+//  File.swift
+//  
 //
-//  Created by Kevin Mullins on 6/15/23.
-//  How to document: https://useyourloaf.com/blog/xcode-docc-getting-started/ & https://github.com/apple/swift-docc-plugin
-
+//  Created by Kevin Mullins on 10/19/23.
+//
 import Foundation
 import OSLog
 
-/// A helper class to incorporate logging that will be deactivated when the app is built for **Release**.
-class Debug {
+/// A helper class to incorporate logging that will be deactivated when the app is built for release.
+open class Debug {
     // MARK: - Static Properties
     /// Holds any logs that are built when they are first called.
     private static var logs:[String:Logger] = [:]
@@ -39,7 +38,7 @@ class Debug {
     /// - Parameters:
     ///   - message: The message to log.
     ///   - suppressDuplicates: If `true` duplicate entries will be suppressed.
-    static func log(_ message:String, suppressDuplicates:Bool = true) {
+    public static func log(_ message:String, suppressDuplicates:Bool = true) {
         #if DEBUG
         if suppressDuplicates {
             if message != lastMessage {
@@ -57,7 +56,7 @@ class Debug {
     ///   - subsystem: The subsystem for the log.
     ///   - category: The category for the log.
     ///   - message: The message to log.
-    static func info(subsystem:String, category:String, _ message:String) {
+    public static func info(subsystem:String, category:String, _ message:String) {
         #if DEBUG
         let log = logFor(subsystem: subsystem, category: category)
         log.info("\(message)")
@@ -69,7 +68,7 @@ class Debug {
     ///   - subsystem: The subsystem for the log.
     ///   - category: The category for the log.
     ///   - message: The message to log.
-    static func error(subsystem:String, category:String, _ message:String) {
+    public static func error(subsystem:String, category:String, _ message:String) {
         #if DEBUG
         let log = logFor(subsystem: subsystem, category: category)
         log.error("\(message)")
@@ -81,10 +80,11 @@ class Debug {
     ///   - subsystem: The subsystem for the log.
     ///   - category: The category for the log.
     ///   - message: The message to log.
-    static func notice(subsystem:String, category:String, _ message:String) {
+    public static func notice(subsystem:String, category:String, _ message:String) {
         #if DEBUG
         let log = logFor(subsystem: subsystem, category: category)
         log.notice("\(message)")
         #endif
     }
 }
+

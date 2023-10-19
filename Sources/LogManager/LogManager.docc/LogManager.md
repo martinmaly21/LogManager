@@ -1,6 +1,6 @@
 # ``LogManager``
 
-LogManager is a simple library to make it easier to add pretty debugging loggin entries to an App project. 
+LogManager is a simple library to make it easier to add pretty debugging logging entries to an App project. 
 
 ## Overview
 
