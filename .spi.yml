@@ -1,0 +1,12 @@
+version: 1
+builder:
+  configs:
+  - platform: ios
+    scheme: LogManager
+  - platform: macos-xcodebuild
+    scheme: LogManager
+  - platform: tvos
+    scheme: LogManager
+  - platform: watchos
+    scheme: LogManager
+  - documentation_targets: [LogManager]
